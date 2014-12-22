@@ -305,7 +305,49 @@
             return GetParameter(qstring, query);
         }
 
-    --></script>
+    </script>
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+    (function (d, w, c) {
+        (w[c] = w[c] || []).push(function() {
+            try {
+                w.yaCounter27702507 = new Ya.Metrika({id:27702507,
+                        webvisor:true,
+                        clickmap:true,
+                        trackLinks:true,
+                        accurateTrackBounce:true});
+            } catch(e) { }
+        });
+
+        var n = d.getElementsByTagName("script")[0],
+            s = d.createElement("script"),
+            f = function () { n.parentNode.insertBefore(s, n); };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else { f(); }
+    })(document, window, "yandex_metrika_callbacks");
+    </script>
+    <noscript><div><img src="//mc.yandex.ru/watch/27702507" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+
+    <script>
+        (function(f,b,g){
+            var xo=g.prototype.open,xs=g.prototype.send,c;
+            f.hj=f.hj||function(){(f.hj.q=f.hj.q||[]).push(arguments)};
+            f._hjSettings={hjid:8253, hjsv:2};
+            function ls(){f.hj.documentHtml=b.documentElement.outerHTML;c=b.createElement("script");c.async=1;c.src="//static.hotjar.com/c/hotjar-8253.js?sv=2";b.getElementsByTagName("head")[0].appendChild(c);}
+            if(b.readyState==="interactive"||b.readyState==="complete"||b.readyState==="loaded"){ls();}else{if(b.addEventListener){b.addEventListener("DOMContentLoaded",ls,false);}}
+            if(!f._hjPlayback && b.addEventListener){
+                g.prototype.open=function(l,j,m,h,k){this._u=j;xo.call(this,l,j,m,h,k)};
+                g.prototype.send=function(e){var j=this;function h(){if(j.readyState===4){f.hj("_xhr",j._u,j.status,j.response)}}this.addEventListener("readystatechange",h,false);xs.call(this,e)};
+            }
+        })(window,document,window.XMLHttpRequest);
+    </script>
 
     <link type="text/css" rel="Stylesheet" href="plugins/sitemap/styles/sitemap.css" />
     <script type="text/javascript" src="plugins/sitemap/sitemap.js"></script>
