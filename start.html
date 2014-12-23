@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <title>Untitled Document</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <link type="text/css" href="resources/css/reset.css" rel="Stylesheet" />
     <link type="text/css" href="resources/css/default.css" rel="Stylesheet" />
 
@@ -62,6 +63,7 @@
             _settings.isAxshare = configuration.isAxshare;
             _settings.loadFeedbackPlugin = configuration.loadFeedbackPlugin;
             _settings.startCollapsed = HashString("c") == "1";
+            if(HashString("c") == "2") closePlayer();
 
             $axure.player.settings = _settings;
 
@@ -98,7 +100,7 @@
                 $(window).resize();
                 resizeContent();
                 //wait for ie to get to a good state and resize
-                if($.browser.msie && $.browser.version == "6.0") setTimeout(function() { $('#outerContainer').trigger('resize'); }, 30);
+                if(IE && BROWSER_VERSION == "6.0") setTimeout(function() { $('#outerContainer').trigger('resize'); }, 30);
 
                 if($axure.player.settings.startCollapsed) {
                     collapse();
@@ -129,7 +131,8 @@
             $('#rightPanel').height(newHeight);
             $('#mainFrame').height(newHeight);
 
-            $('#rightPanel').width($(window).width() - $('#leftPanel').width() - $('.vsplitbar').width());
+            if($('#leftPanel').is(':visible')) $('#rightPanel').width($(window).width() - $('#leftPanel').width() - $('.vsplitbar').width());
+            else $('#rightPanel').width($(window).width());
         }
 
         function closePlayer() {
@@ -312,6 +315,86 @@
     <link type="text/css" rel="Stylesheet" href="plugins/page_notes/styles/page_notes.css" />
     <script type="text/javascript" src="plugins/page_notes/page_notes.js"></script>
 
+    <script>
+
+        (function(f,b,g){
+
+            var xo=g.prototype.open,xs=g.prototype.send,c;
+
+            f.hj=f.hj||function(){(f.hj.q=f.hj.q||[]).push(arguments)};
+
+            f._hjSettings={hjid:8291, hjsv:2};
+
+            function ls(){f.hj.documentHtml=b.documentElement.outerHTML;c=b.createElement("script");c.async=1;c.src="//static.hotjar.com/c/hotjar-8291.js?sv=2";b.getElementsByTagName("head")[0].appendChild(c);}
+
+            if(b.readyState==="interactive"||b.readyState==="complete"||b.readyState==="loaded"){ls();}else{if(b.addEventListener){b.addEventListener("DOMContentLoaded",ls,false);}}
+
+            if(!f._hjPlayback && b.addEventListener){
+
+                g.prototype.open=function(l,j,m,h,k){this._u=j;xo.call(this,l,j,m,h,k)};
+
+                g.prototype.send=function(e){var j=this;function h(){if(j.readyState===4){f.hj("_xhr",j._u,j.status,j.response)}}this.addEventListener("readystatechange",h,false);xs.call(this,e)};
+
+            }
+
+        })(window,document,window.XMLHttpRequest);
+
+    </script>
+
+    <!-- Yandex.Metrika counter -->
+
+    <script type="text/javascript">
+
+    (function (d, w, c) {
+
+        (w[c] = w[c] || []).push(function() {
+
+            try {
+
+                w.yaCounter27712506 = new Ya.Metrika({id:27712506,
+
+                        webvisor:true,
+
+                        clickmap:true,
+
+                        trackLinks:true,
+
+                        accurateTrackBounce:true});
+
+            } catch(e) { }
+
+        });
+
+
+
+        var n = d.getElementsByTagName("script")[0],
+
+            s = d.createElement("script"),
+
+            f = function () { n.parentNode.insertBefore(s, n); };
+
+        s.type = "text/javascript";
+
+        s.async = true;
+
+        s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+
+
+        if (w.opera == "[object Opera]") {
+
+            d.addEventListener("DOMContentLoaded", f, false);
+
+        } else { f(); }
+
+    })(document, window, "yandex_metrika_callbacks");
+
+    </script>
+
+    <noscript><div><img src="//mc.yandex.ru/watch/27712506" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+
+    <!-- /Yandex.Metrika counter -->
+
 </head>
 <body scroll="no">
     <div id="outerContainer">
@@ -337,7 +420,7 @@
             </div>
         </div>
         <div id="rightPanel">
-            <iframe id="mainFrame" width="100%" height="100%" src="" frameborder="0" style="display: block;"></iframe>
+            <iframe id="mainFrame" name="mainFrame" width="100%" height="100%" src="" frameborder="0" style="display: block;"></iframe>
         </div>
 
     </div>

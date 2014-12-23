@@ -7,6 +7,10 @@ var CHROME_5_LOCAL = false;
 var CHROME = false;
 var WEBKIT = false;
 var OS_MAC = false;
+var IOS = false;
+
+var IE = false;
+var BROWSER_VERSION = 5000;
 (function () {
     var chromeRegex = /Chrome\/([0-9]+).([0-9]+)/g ;
     var chromeMatch = chromeRegex.exec(window.navigator.userAgent);
@@ -20,6 +24,13 @@ var OS_MAC = false;
     
     var macRegex = /Mac/g ;
     OS_MAC = Boolean(macRegex.exec(window.navigator.platform));
+
+    IOS = navigator.userAgent.match( /iPhone/i ) || navigator.userAgent.match( /iPad/i ) || navigator.userAgent.match( /iPod/i );
+
+    if($.browser) {
+        IE = $.browser.msie;
+        BROWSER_VERSION = $.browser.version;
+    }
 })();
 
 (function() {
@@ -44,8 +55,10 @@ var OS_MAC = false;
     (function() {
         if (!CHROME_5_LOCAL) {
             var topAxureWindow = window;
-            while (topAxureWindow.parent && topAxureWindow.parent !== topAxureWindow
-                && topAxureWindow.parent.$axure) topAxureWindow = topAxureWindow.parent;
+            try {
+                while(topAxureWindow.parent && topAxureWindow.parent !== topAxureWindow
+                    && topAxureWindow.parent.$axure) topAxureWindow = topAxureWindow.parent;
+            } catch(e) {}
             _topMessageCenter = topAxureWindow.$axure.messageCenter;
         }
     })();
